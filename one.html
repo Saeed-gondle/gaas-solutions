@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Landing Page</title>
+<style>
+  /* General Styling */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f4f4f9;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 1.8rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+    }
+    p {
+      font-size: 0.9rem;
+    }
+    section {
+      padding: 1.5rem 1rem;
+    }
+    form input, form button {
+      font-size: 1rem;
+      padding: 0.5rem;
+    }
+    .schedule-item {
+      width: 100%; /* Stack schedule items on smaller screens */
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    h1 {
+      font-size: 2rem;
+    }
+    h2 {
+      font-size: 1.75rem;
+    }
+    p {
+      font-size: 1rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Header Section -->
+<section style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://example.com/event-bg.jpg') no-repeat center/cover; color: #fff; text-align: center; padding: 4rem 2rem;">
+  <div style="width: 90%; max-width: 1200px; margin: auto;">
+    <h1 style="font-size: 2.5rem; font-weight: bold; margin: 0;">Winter Wonderland Music Fest</h1>
+    <p style="font-size: 1.25rem; margin-top: 0.5rem;">December 15, 2024 | Central Park, NYC</p>
+  </div>
+</section>
+
+<!-- About the Event Section -->
+<section style="padding: 2rem 0; text-align: center;">
+  <div style="width: 90%; max-width: 700px; margin: auto;">
+    <h2 style="font-size: 2rem; font-weight: bold; margin: 0;">About the Event</h2>
+    <p style="font-size: 1rem; line-height: 1.6; margin: 1rem auto;">Experience the magic of live music under the stars! Join us for an unforgettable night of performances, food, and festivities at the Winter Wonderland Music Fest. Featuring top artists, interactive experiences, and much more, it's the perfect way to celebrate the season.</p>
+  </div>
+</section>
+
+<!-- Schedule Section -->
+<section style="background-color: #e1e5eb; padding: 2rem 0;">
+  <div style="width: 90%; max-width: 1200px; margin: auto; text-align: center;">
+    <h2 style="font-size: 2rem; font-weight: bold; margin: 0;">Event Schedule</h2>
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-around; padding-top: 1rem;">
+      <!-- Schedule Item -->
+      <div class="schedule-item" style="width: 100%; max-width: 300px; background-color: #fff; padding: 1rem; margin: 0.5rem; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <h3 style="font-size: 1.25rem; color: #0077b6; margin: 0;">5:00 PM - Gates Open</h3>
+        <p style="font-size: 1rem; line-height: 1.6;">Get in early to explore the venue and find your perfect spot.</p>
+      </div>
+      <div class="schedule-item" style="width: 100%; max-width: 300px; background-color: #fff; padding: 1rem; margin: 0.5rem; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <h3 style="font-size: 1.25rem; color: #0077b6; margin: 0;">6:30 PM - Opening Act</h3>
+        <p style="font-size: 1rem; line-height: 1.6;">Warm up with our first performance of the night!</p>
+      </div>
+      <div class="schedule-item" style="width: 100%; max-width: 300px; background-color: #fff; padding: 1rem; margin: 0.5rem; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <h3 style="font-size: 1.25rem; color: #0077b6; margin: 0;">8:00 PM - Headliner</h3>
+        <p style="font-size: 1rem; line-height: 1.6;">Enjoy the main performance with our star artist.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Registration Form Section -->
+<section style="padding: 2rem 0; text-align: center;">
+  <div style="width: 90%; max-width: 400px; margin: auto;">
+    <h2 style="font-size: 2rem; font-weight: bold; margin: 0 0 1rem;">Register Now</h2>
+    <form action="/submit" method="POST" style="display: inline-block; width: 100%;">
+      <div style="display: flex; flex-direction: column; margin-bottom: 1rem;">
+        <label for="name" style="margin-bottom: 0.25rem; font-weight: bold;">Name</label>
+        <input type="text" id="name" name="name" required style="padding: 0.75rem; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem;">
+      </div>
+      <div style="display: flex; flex-direction: column; margin-bottom: 1rem;">
+        <label for="email" style="margin-bottom: 0.25rem; font-weight: bold;">Email</label>
+        <input type="email" id="email" name="email" required style="padding: 0.75rem; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem;">
+      </div>
+      <div style="display: flex; flex-direction: column; margin-bottom: 1rem;">
+        <label for="attendees" style="margin-bottom: 0.25rem; font-weight: bold;">Number of Attendees</label>
+        <input type="number" id="attendees" name="attendees" min="1" required style="padding: 0.75rem; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem;">
+      </div>
+      <button type="submit" style="background-color: #0077b6; color: #fff; padding: 0.75rem 1.5rem; font-size: 1.1rem; border: none; border-radius: 5px; cursor: pointer;">Register</button>
+    </form>
+  </div>
+</section>
+
+</body>
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HuntingFlex</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Rajdhani:wght@300;400;500;600;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        font-size: 62.5%;
+      }
+      body {
+        width: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+      h2 {
+        font-family: "Rajdhani", sans-serif;
+      }
+      /* @media screen and (max-width: 786px) {
+        #section-hero {
+          background: url("./assets/img/home-banner.png.webp") no-repeat center !important;
+          background-size: cover !important;
+          height: 82vh !important;
+        }
+      }
+      @media screen and (min-width: 1024px) {
+        #section-hero {
+          height: 82vh !important;
+        }
+      } */
+      @media screen and (min-width: 1660px) {
+        #section-hero {
+          background-size: contain !important;
+          /* height: 60vh; */
+        }
+      }
+    </style>
+    <link rel="stylesheet" crossorigin href="./src/output.css">
+  </head>
+  <body>
+    <header class="bg-white">
+      <nav
+        class="flex max-w-[95%] items-center justify-between py-10 lg:px-8 gap-3 px-8 lg:px-0"
+        aria-label="Global"
+      >
+        <div class="flex lg:flex-1 items-center justify-center -translate-y-1">
+          <a href="#" class="-m-1.5 p-1.5">
+            <span class="sr-only">Your Company</span>
+            <img class="" src="data:image/png;base64,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" alt="" />
+          </a>
+        </div>
+        <div class="flex lg:hidden">
+          <button
+            id="mobile-menu-button"
+            type="button"
+            class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
+          >
+            <span class="sr-only">Open main menu</span>
+            <svg
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="hidden lg:flex lg:gap-x-12">
+          <a href="#" class="text-sm font-semibold leading-6 text-gray-900"
+            >Home</a
+          >
+          <a href="#" class="text-sm font-semibold leading-6 text-gray-900"
+            >Features</a
+          >
+          <a href="#" class="text-sm font-semibold leading-6 text-gray-900"
+            >Pricing</a
+          >
+          <a href="#" class="text-sm font-semibold leading-6 text-gray-900"
+            >Pages</a
+          >
+          <div class="relative group">
+            <a href="#" class="text-sm font-semibold leading-6 text-gray-900"
+              >Pages</a
+            >
+            <div
+              class="absolute hidden group-hover:block bg-white shadow-lg rounded-md mt-2"
+            >
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >Page 1</a
+              >
+            </div>
+          </div>
+          <div class="relative group">
+            <a href="#" class="text-sm font-semibold leading-6 text-gray-900"
+              >Blog</a
+            >
+            <div
+              class="absolute hidden group-hover:block bg-white shadow-lg rounded-md mt-2"
+            >
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >Blog Name</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >Blog Information</a
+              >
+            </div>
+          </div>
+          <a href="#" class="text-sm font-semibold leading-6 text-gray-900"
+            >Contact</a
+          >
+        </div>
+        <div class="hidden lg:flex lg:flex-1 lg:justify-center">
+          <button type="button" class="btn__primary">Free Trial</button>
+        </div>
+      </nav>
+      <!-- Mobile menu, show/hide based on menu open state. -->
+      <div
+        id="mobile-menu"
+        class="lg:hidden hidden"
+        role="dialog"
+        aria-modal="true"
+      >
+        <!-- Background backdrop, show/hide based on slide-over state. -->
+        <div class="fixed inset-0 z-10"></div>
+        <div
+          class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10"
+        >
+          <div class="flex items-center justify-between">
+            <a href="#" class="-m-1.5 p-1.5">
+              <span class="sr-only">Your Company</span>
+              <img
+                class="h-8 w-auto"
+                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                alt=""
+              />
+            </a>
+            <button
+              id="close-menu-button"
+              type="button"
+              class="-m-2.5 rounded-md p-2.5 text-gray-700"
+            >
+              <span class="sr-only">Close menu</span>
+              <svg
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+          <div class="mt-6 flow-root">
+            <div class="-my-6 divide-y divide-gray-500/10">
+              <div class="space-y-2 py-6">
+                <a
+                  href="#"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900"
+                  >Product</a
+                >
+                <a
+                  href="#"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >Features</a
+                >
+                <a
+                  href="#"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >Marketplace</a
+                >
+                <a
+                  href="#"
+                  class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >Company</a
+                >
+              </div>
+              <div class="py-6">
+                <a
+                  href="#"
+                  class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                  >Log in</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section
+        id="section-hero"
+        class="bg-contain md:bg-center h-[82vh] lg:h-[82vh] 1440:h-[82vh] full:h-[64vh]"
+        style="
+          background: url('/assets/home-banner.png-CuYl6tqu.webp') no-repeat right
+            center;
+        "
+      >
+        <div
+          class="hero__container flex items-center justify-center gap-2 full:h-[47vh] md:h-[68vh] lg:h-[82vh] w-[88%] mx-auto"
+        >
+          <div
+            class="hero__content flex flex-col items-start justify-center w-full full:max-w-[34%] lg:max-w-[48%] p-5 gap-8"
+          >
+            <h2
+              class="hero__title text-white mt-0 text-[4rem] lg:text-[4.8rem] leading-[54px] mb-5 lg:text-left"
+            >
+              Mass People <br />
+              Oriented Software
+            </h2>
+            <p
+              class="hero__subtitle text-white font-semibold text-[1.5rem] text-left w-[78%] pb-5"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim. sed do eiusmod tempor incididunt.
+            </p>
+            <div class="btns flex items-center justify-between gap-8">
+              <button
+                class="btn__primary bg-white text-custom-purple border-2 border-white"
+              >
+                Get Started
+              </button>
+              <a
+                id="play-home-video"
+                class="video-play-button"
+                href="https://www.youtube.com/watch?time_continue=2&amp;v=J9YzcEe29d0"
+              >
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAADsAAAA7AF5KHG9AAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAA2BJREFUWIW1lz1sW1UUx3/nPhsnhiQOxupW0Ujt0JS2bA1SUauKAYkodMpEBxLHKhWIqR3o4KUqSBVfU/KqKiOSvWAhRpD4iNKixptVUIJYEBkskmcH1Xbq9w5DbWOCX/z8wX+793z8/3rnnHvvE3pA2bZPeKoXMeYMcExVxwAPKKO6iUi+blnfJBYW/giaU7o5aCZjOaXSFTzvXUReDpDTA75X1TvPp1JfDyRgx7bfEPgQmA5A3AnfGWOuTywu/tSTAM1krF3HuSVwo0/idrgCH8SWlj4KJGBnZWVCRLLAa0Mgb8e9mOpVSaWetG+a9oVmMpYR+eJ/IAdYcESWD27+S4DjOJ8ovN4x3BhMNDqoiLd3Vlautm+0StBouK/8IkdnZohMT1N79Ijqw4dordaviCeu6ukXUqmfofEFNJOxGt3uCxONggiRkycZn58ncuoUSNcp7oSwJXK7lRfAKZWu0MOoSSTC6MwMz83OYsXj/Yh480/bfqUlANX3+skSOnKEscuXiV64gIyM9BRriVwDkLJtn3Dhl24Bz166RHhqyteutRrVfJ5aoQCqQTQ8dsLhuPFULwaWfQiaZRmbm8NKJIKERGP1+jnTuFiGBiuRYGxuLlhZVM+EUH1xmAIAEOGZ48cJHz3arSzHjML40AU0dTTKEj1/3s9lwgCBOqZvqOI6jp/VCwG+1kHhFos8XlvDLRb9XJwQ8OuwiYOOpKpuhRDJB5zbAMzK/tYWlfv30Wq1q7sF+ZAH35qnfdDXwd5EgM99ELvj29sbJp5M/g782C+x1mpU1tfZy+V6IUdVs5JO10ON1ceI+M6KTwZqhQLVjQ10f7+nUMBVkc+hcRlNplJfAmuBo4tF9nI5Kuvr/ZCDyGp8aakAEGrueXDdwA8ceCW1SMtlrEqF6oMH7G9u9k76D/5y6/V0S0u7xbHtG3rYw8QY8LxByFVU52OpVLaVst3aeDrf8w0fjBwVudlO/h8BALFY7J1DRfQHT1VvTi4u3j5o8J393bt330f1DmANSL6HyFuTyWSuk7FjwwFMJpOfuiIv8fQnpR94iGRx3dN+5BDw9NtdXn5VjbkmMAuMdnF3FLIKnzVH7TD0dPz+tro6EqvXzwFnUZ0Cmr/nJVXdtCA/vr29Iel0PWjOvwG5G1PtkFpTPwAAAABJRU5ErkJggg==" alt="" />
+              </a>
+              <span class="text-white">Watch video</span>
+            </div>
+          </div>
+          <div class="hero__img max-w-[50%] hidden lg:block">
+            <img
+              src="/assets/home-right.png-Bl--1JLx.webp"
+              alt="HuntingFlex"
+              class="max-w-full -translate-x-16 relative top-[2rem]"
+            />
+          </div>
+        </div>
+      </section>
+      <section id="section--1" class="mt-96">
+        <div class="container flex flex-col items-center justify-center mb-24">
+          <div
+            class="features__header flex flex-col items-center justify-center gap-4 max-w-[80%] md:max-w-[80%] lg:max-w-[70%] xl:max-w-[60%] 2xl:max-w-[50%] mx-auto"
+          >
+            <h3 class="text-xl lg:text-2xl text-gray-700 font-bold">
+              Exclusive Stunning Features
+            </h3>
+            <h2 class="text-3xl lg:text-6xl text-gray-800 font-semibold">
+              A Complete Software Based Website
+            </h2>
+            <p class="text-[1.4rem] text-[#777777] font-bold text-center">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation.
+            </p>
+            <button class="btn__primary">Start Free Trial Now</button>
+          </div>
+        </div>
+        <div
+          class="features__main flex items-center flex-col justify-center gap-32 lg:flex-row"
+        >
+          <div class="feature__img">
+            <img src="/assets/f-img.png-Dq3X6phH.webp" alt="" />
+          </div>
+          <div
+            class="feature__main space-y-12 grid gap-10 flex-grow-0 flex-[41%] 1440:flex-[30%] 1440:flex-grow-0 lg:flex-col lg:gap-12 lg:space-y-0"
+           
+          >
+            <div class="feature flex flex-col gap-4 items-start justify-center">
+              <h3
+                class="text-[#222222] text-[2rem] flex items-start gap-6 justify-center"
+              >
+                <span class="mdi--monitor"></span> Stunning Visuals
+              </h3>
+              <p class="text-[1.4rem] text-[#777777] w-[77%]">
+                Here, I focus on a range of items and features that we use in
+                life without giving them a second thought such as Coca Cola.
+              </p>
+            </div>
+            <div class="feature flex flex-col gap-4 items-start justify-center">
+              <h3
+                class="text-[#222222] text-[2rem] flex items-start gap-6 justify-center"
+              >
+                <span class="mdi--monitor"></span> Stunning Visuals
+              </h3>
+              <p class="text-[1.4rem] text-[#777777] w-[77%]">
+                Here, I focus on a range of items and features that we use in
+                life without giving them a second thought such as Coca Cola.
+              </p>
+            </div>
+            <div
+              class="feature border-2 flex flex-col gap-4 items-start justify-center"
+            >
+              <h3
+                class="text-[#222222] text-[2rem] flex items-start gap-6 justify-center"
+              >
+                <span class="mdi--monitor"></span> Stunning Visuals
+              </h3>
+              <p class="text-[1.4rem] text-[#777777] w-[77%]">
+                Here, I focus on a range of items and features that we use in
+                life without giving them a second thought such as Coca Cola.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer></footer>
+    <!-- <script src="https://cdn.tailwindcss.com" defer></script> -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const closeMenuButton = document.getElementById("close-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        mobileMenuButton.addEventListener("click", function () {
+          mobileMenu.classList.toggle("hidden");
+        });
+
+        closeMenuButton.addEventListener("click", function () {
+          mobileMenu.classList.add("hidden");
+        });
+      });
+    </script>
+  </body>
+</html>
+
+<!-- Breakpoint prefix	Minimum width	CSS
+sm	640px	@media (min-width: 640px) { ... }
+md	768px	@media (min-width: 768px) { ... }
+lg	1024px	@media (min-width: 1024px) { ... }
+xl	1280px	@media (min-width: 1280px) { ... }
+2xl	1536px	@media (min-width: 1536px) { ... } -->
+<!-- <span class="mdi--monitor"></span> -->
